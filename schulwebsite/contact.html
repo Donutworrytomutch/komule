@@ -1,0 +1,147 @@
+<header>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="contact.html">contact</a></li>
+    <li><a href="chatroom.html">chatroom</a></li>
+    <li><a href="Ags.html">interessen</a></li>
+    <li><a href="user.html">klassenkameraden</a></li>
+  </ul>
+</header>
+
+
+<!DOCTYPE html>
+<html>
+<title>contact</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<body>
+
+<form id="contactForm" class="w3-container w3-card-4 w3-light-grey w3-text-blue w3-margin">
+  <h2 class="w3-center">Contact Us</h2>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="first" type="text" placeholder="First Name">
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-user"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="last" type="text" placeholder="Last Name">
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-envelope-o"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="email" type="text" placeholder="Email">
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-phone"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="phone" type="text" placeholder="Phone">
+    </div>
+  </div>
+  
+  <div class="w3-row w3-section">
+    <div class="w3-col" style="width:50px"><i class="w3-xxlarge fa fa-pencil"></i></div>
+    <div class="w3-rest">
+      <input class="w3-input w3-border" name="message" type="text" placeholder="Message">
+    </div>
+  </div>
+  
+  <p class="w3-center">
+    <button class="w3-button w3-section w3-blue w3-ripple" type="submit">Send</button>
+  </p>
+</form>
+
+<script>
+  // Get the form element
+  var form = document.getElementById('contactForm');
+
+  // Add event listener for form submission
+  form.addEventListener('submit', function(event) {
+    event.preventDefault(); // Prevent the form from submitting
+
+    // Get form data
+    var formData = new FormData(form);
+
+    // Create a new XMLHttpRequest object
+    var xhr = new XMLHttpRequest();
+
+    // Prepare the POST request
+    xhr.open('POST', 'send_email.php', true);
+
+    // Set the request header for form data
+    xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+
+    // Define the callback function when the request is complete
+    xhr.onload = function() {
+      if (xhr.status === 200) {
+        // Request was successful
+        console.log(xhr.responseText); // Log the response from the server
+        form.reset(); // Reset the form
+      } else {
+        // Request failed
+        console.error('An error occurred.');
+      }
+    };
+
+    // Convert form data to URL-encoded string
+    var encodedFormData = new URLSearchParams(formData).toString();
+
+    // Send the POST request with form data
+    xhr.send(encodedFormData);
+  });
+</script>
+<style>
+  header {
+    background-color:   #1abc9c;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 24px;
+  }
+  
+  header .logo {
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  header ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    vertical-align: middle;
+  }
+  
+  header ul li {
+    display: inline;
+    margin-right: 10px;
+  }
+  
+  header ul li a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  footer {
+    background-color:  #1abc9c;
+    padding: 20px;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+  }
+</style>
+
+</body>
+</html>
+<footer>
+  <p>&copy; 2023 Your Website. All rights reserved.</p>
+</footer>
